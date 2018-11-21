@@ -1,0 +1,31 @@
+@charset "utf-8";
+
+
+// fonte VT323
+// regras css => font-family: 'VT323', monospace;
+@import url('https://fonts.googleapis.com/css?family=VT323');
+
+
+//variaveis globais pessoais
+
+//classes
+.navbar{
+  font-family: 'VT323', monospace;
+  font-size: 25px;
+}
+
+//classes pessoais
+.has-scroll{
+  /* Para mobile: */
+  overflow-x: scroll;
+  height: auto;
+}
+@media only screen and (min-width: 900px){
+  /* Para desktop: */
+  .has-scroll{
+    overflow-x: hidden;
+    height: auto;
+  }
+}
+//bulma
+@import "../node_modules/bulma/bulma.sass";

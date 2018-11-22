@@ -12,7 +12,8 @@ class User{
   public function __set($a,$v){$this->$a = $v;}
 
   public function __toString(){
-    return nl2br("Usuário: $this->username
+    return nl2br("ID: $tthis->idUser
+                  Usuário: $this->username
                   Email: $this->email
                   Senha: $this->password");
   }

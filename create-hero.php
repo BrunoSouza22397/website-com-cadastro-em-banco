@@ -206,7 +206,7 @@ ob_start();
           }
           If(isset($_POST['cadastrar'])){
             include_once "model/hero.class.php";
-            include_once "dao/herodao.class.php";
+            include_once "dao/dao.class.php";
             include_once "util/utilities.class.php";
 
             //Tratamento de erros
@@ -244,8 +244,8 @@ ob_start();
               $hero->background = Utilities::padronizarInputs($_POST['txtbackground']);
               $hero->backstory = Utilities::padronizarTexto($_POST['txtbackstory']);
 
-              $heroDAO = new HeroDAO();
-              $heroDAO->registerHero($hero);
+              $dao = new DAO();
+              $dao->registerHero($hero);
 
               //teste
               // echo "Personagem Cadastrado!<br>";

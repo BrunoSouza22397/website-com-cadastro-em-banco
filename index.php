@@ -175,7 +175,7 @@
       <?php }//fecha else
         if(isset($_POST['cadastrar'])){
           include_once "model/user.class.php";
-          include_once "dao/userdao.class.php";
+          include_once "dao/dao.class.php";
           include_once "util/utilities.class.php";
 
           //tratamento de erros
@@ -205,8 +205,8 @@
             $user->email = Utilities::padronizarUser($_POST['txtemail']);
             $user->pass = Utilities::encrypt($_POST['txtpass']);
 
-            $userDAO = new UserDAO();
-            $userDAO->registerUser($user);
+            $dao = new DAO();
+            $dao->registerUser($user);
 
             $_SESSION['msg'] = "Usuário cadastrado com sucesso!";
             header("location:index.php?login=2");
@@ -219,15 +219,15 @@
         }//fecha if cadastrar
         if(isset($_POST['login'])){
           include_once "model/user.class.php";
-          include_once "dao/userdao.class.php";
+          include_once "dao/dao.class.php";
           include_once "util/utilities.class.php";
 
           $u = new User();
           $u->username = Utilities::padronizarUser($_POST['txtuser']);
           $u->pass = Utilities::encrypt($_POST['txtpass']);
 
-          $uDAO = new UserDAO();
-          $usuario = $uDAO->logUser($u);
+          $dao = new DAO();
+          $usuario = $dao->logUser($u);
 
           if($usuario == null){
             echo "<h2 class='tile subtitle notification is-danger'>Usuário/senha inváido(s)!</h2>";

@@ -1,5 +1,6 @@
 <?php
 class Hero{
+  private $idHero;
   private $name;
   private $race;
   private $sex;
@@ -12,7 +13,8 @@ class Hero{
   public function __get($a){return $this->$a;}
   public function __set($a, $v){$this->$a = $v;}
   public function __toString(){
-    return nl2br("Nome: $this->name
+    return nl2br("ID: $this->idHero
+                  Nome: $this->name
                   Raça: $this->race
                   Sexo: $this->sex
                   Classe: $this->class

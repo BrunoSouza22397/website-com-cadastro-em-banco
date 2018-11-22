@@ -2,11 +2,11 @@
   session_start();
   ob_start();
   include_once "model/hero.class.php";
-  include_once "dao/herodao.class.php";
+  include_once "dao/dao.class.php";
 
-  $heroDAO = new HeroDAO();
+  $dao = new DAO();
 
-  $array = $heroDAO->searchHero();
+  $array = $dao->searchHero();
   //só para teste
   // var_dump($array);
 ?>
@@ -110,8 +110,8 @@
         </form>
         <?php
         if(isset($_POST['filter'])){
-          $heroDAO = new HeroDAO();
-          $array = $heroDAO->filterHero($_POST['selfilter'], $_POST['txtkwords']);
+          $dao = new DAO();
+          $array = $dao->filterHero($_POST['selfilter'], $_POST['txtkwords']);
           if (count($array) == 0) {
             echo "<h2 class='subtitle tile notification is-warning'>Sua pesquisa não retornou resultados</h2>";
             return;
@@ -167,8 +167,8 @@
     </div>
     <?php
     if(isset($_GET['id'])){
-      $heroDAO = new HeroDAO();
-      $heroDAO->deleteHero($_GET['id']);
+      $dao = new DAO();
+      $dao->deleteHero($_GET['id']);
       header("location:search-hero.php");
     }
     ?>

@@ -3,9 +3,9 @@ session_start();
 ob_start();
 if(isset($_GET['id'])){
   include_once "model/hero.class.php";
-  include_once "dao/herodao.class.php";
-  $heroDAO = new HeroDAO();
-  $array = $heroDAO->filterHero("id",$_GET['id']);
+  include_once "dao/dao.class.php";
+  $dao = new DAO();
+  $array = $dao->filterHero("id",$_GET['id']);
   $hero = $array[0];
 }else{
   $_SESSION['warning'] = "Escolha um personagem para alterar.";
@@ -179,7 +179,7 @@ if(isset($_GET['id'])){
           }
           If(isset($_POST['edit'])){
             include_once "model/hero.class.php";
-            include_once "dao/herodao.class.php";
+            include_once "dao/dao.class.php";
             include_once "util/utilities.class.php";
 
             //Tratamento de erros
@@ -214,8 +214,8 @@ if(isset($_GET['id'])){
               $hero->background = Utilities::padronizarInputs($_POST['txtbackground']);
               $hero->backstory = Utilities::padronizarTexto($_POST['txtbackstory']);
 
-              $heroDAO = new HeroDAO();
-              $heroDAO->editHero($hero);
+              $dao = new DAO();
+              $dao->editHero($hero);
 
               //teste
               // echo "Personagem Cadastrado!<br>";
